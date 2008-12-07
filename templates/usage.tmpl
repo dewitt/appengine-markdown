@@ -1,0 +1,74 @@
+<html>
+  <head>
+   <title>markdown</title>
+  </head>
+  <body>
+    <h1>markdown</h1>
+    <p>
+      A wrapper around the <a href="http://www.freewisdom.org/projects/python-markdown/">python markdown library</a> for formatting text as html.
+    </p>
+    <h3>GET requests</h3>
+    <p>
+      The <code><strong>url</strong></code> parameter can be used to refer to a page of <a href="http://daringfireball.net/projects/markdown/syntax">markdown content</a> to be formatted as html.  
+      The value must be URL encoded.  Example:
+    </p>
+    <ul>
+      <li><code>GET</code> <a href="/markdown?url={{ example_markdown_url|urlencode }}">/indent?url={{ example_markdown_url }}</a></li>
+    </ul>
+    <p>
+      Alternatively, the url encoded <code><strong>content</strong></code> parameter can be used to include the markdown text in the <code>GET</code> request itself.  Example:
+    </p>
+    <ul>
+      <li><code>GET</code> <a href="/markdown?content={{ example_markdown_text|urlencode }}">/indent?content={{ example_markdown_text }}</a></li>
+    </ul>
+    <p>
+      The <code><strong>json</strong></code> parameter will wrap the response in a JSON dictionary under the key <code>html</code>.  Example:
+    </p>
+    <ul>
+      <li><code>GET</code> <a href="/markdown?url={{ example_markdown_url|urlencode }}&amp;json=1">/indent?url={{ example_markdown_url }}&amp;json=1</a></li>
+    </ul>
+    <p>
+      The <code><strong>callback=<em>foo</em></strong></code> parameter will enable JSONP-style callbacks, suitable for use within a &lt;script src&gt; tag. Example: 
+    </p>
+    <ul>
+      <li><code>GET</code> <a href="/markdown?url={{ example_markdown_url|urlencode }}&amp;callback=foo">/indent?url={{ example_markdown_url }}&amp;callback=foo</a></li>
+    </ul>
+    <h3>POST requests</h3>
+    <p>
+      <code>POST</code> requests to <code>/markdown</code> can be
+      either <code>multipart/form-data</code>
+      or <code>application/x-www-form-urlencoded</code> encoded.  If a
+      key named <code>content</code> is present then the value will
+      be formatted.  If not, the entire request body will be formatted.
+    </p>
+    <form action="/markdown" method="post">
+      <fieldset>
+        <legend>Demonstration using POST</legend>
+        <p>
+          <label for="content">Enter markdown text to be formatted:</label
+          <br>   <textarea name="content" cols="80" rows="16">Markdown
+========
+
+Markdown is a text-to-HTML conversion tool for web writers. Markdown
+allows you to write using an easy-to-read, easy-to-write plain text
+format, then convert it to structurally valid XHTML (or HTML).
+
+Thus, "Markdown" is two things: (1) a plain text formatting syntax;
+and (2) a software tool, written in Perl, that converts the plain text
+formatting to HTML. See the [Syntax][] page for details pertaining to
+Markdown's formatting syntax. You can try it out, right now, using the
+online [Dingus][].
+
+  [syntax]: /projects/markdown/syntax
+  [dingus]: /projects/markdown/dingus
+</textarea> </p>
+        <p>
+          <input type="submit" value="Submit">
+        </p>
+      </fieldset>
+    </form>
+
+
+    <p>Copyright <a href="http://unto.net/">DeWitt Clinton</a> - <a href="http://appengine-markdown.googlecode.com/">Source</a></p>
+  </body>
+</html>
