@@ -1,4 +1,4 @@
-application: markdown-service
+application: markdown-service-hrd
 version: 1
 runtime: python
 api_version: 1
